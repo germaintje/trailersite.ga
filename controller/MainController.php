@@ -28,6 +28,9 @@ class MainController
                 case 'watch':
                     $this->WatchController->collectWatch();
                     break;
+                case 'search':
+                    $this->WatchController->collectSearch();
+                    break;
 
                 default:
                     $this->HomeController->collectHome();

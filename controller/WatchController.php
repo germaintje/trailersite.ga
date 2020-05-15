@@ -19,4 +19,10 @@ class WatchController
         include 'view/watch.php';
     }
 
+    public function collectSearch(){
+        $searchInfo = $this->MovieApiLogic->searchMovie();
+
+        include 'view/search.php';
+    }
+
 }
