@@ -43,7 +43,7 @@
                 $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
 
 //                $html .= "<img src='https://api.themoviedb.org/3/movie/$movie_id/images?api_key=75e296279a5da656dbc38ffba223a8cd'>";
-                $html .= "<img src='http://image.tmdb.org/t/p/w185$imageurl'>";
+                $html .= "<img src='http://image.tmdb.org/t/p/w185$imageurl'><br>";
                 $html .= "<a href='watch.php?link=$videospider_url'>$movie_title</a>; ";
             }
         }
