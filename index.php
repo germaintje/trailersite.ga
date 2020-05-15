@@ -32,7 +32,12 @@ foreach ($result as $key => $value) {
 //            var_dump($value);
 //            if ($arrayKey == "resultss") {
             $movie_id = $content["id"];
-            $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=83.83.238.191");
+
+            $ip_nietvergeten = "83.83.238.191";
+
+            $ip = $_SERVER["REMOTE_ADDR"];
+
+            $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
             echo "<iframe src= $videospider_url  width='600' height='400' allowfullscreen='true' scrolling='no'></iframe>";
 
 //            echo $_SERVER["REMOTE_ADDR"];
