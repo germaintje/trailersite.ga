@@ -1,0 +1,23 @@
+{
+  "name": "videoapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass --watch view/css/scss/main.scss view/css/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/germaintje/videoapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/germaintje/videoapi/issues"
+  },
+  "homepage": "https://github.com/germaintje/videoapi#readme",
+  "dependencies": {
+    "sass": "^1.26.5"
+  }
+}

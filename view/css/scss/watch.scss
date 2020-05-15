@@ -1,0 +1,62 @@
+#videoField {
+  width: 100%;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.31);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.31);
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.31);
+
+  iframe {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    margin: 0 auto;
+  }
+}
+
+#watch-movie-info {
+  padding: 50px 0;
+
+  .watch-movie-detail-section {
+    display: flex;
+    align-items: center;
+
+    .watch-movie-detail-info {
+      padding-left: 10px;
+
+      .watch-movie-title {
+        display: flex;
+        align-items: center;
+
+        h2 {
+          margin: 0 10px;
+        }
+      }
+    }
+
+    .watch-movie-details {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+
+      table {
+
+        .fa-star {
+          color: yellow;
+          font-size: 1.2em;
+        }
+
+        span {
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+
+  }
+
+  .watch-movie-overview {
+    padding: 20px 0;
+  }
+}
