@@ -44,7 +44,7 @@
 
 //                $html .= "<img src='https://api.themoviedb.org/3/movie/$movie_id/images?api_key=75e296279a5da656dbc38ffba223a8cd'>";
                 $html .= "<img src='http://image.tmdb.org/t/p/w185$imageurl'><br>";
-                $html .= "<a href='watch.php?link=$videospider_url'>$movie_title</a>; ";
+                $html .= "<a href='watch.php?link=$videospider_url'>$movie_title</a><br>; ";
             }
         }
     }
