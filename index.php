@@ -10,7 +10,6 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
-    //CURLOPT_POSTFIELDS => "{}",
     CURLOPT_HTTPHEADER => array(
         "authorization: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NWUyOTYyNzlhNWRhNjU2ZGJjMzhmZmJhMjIzYThjZCIsInN1YiI6IjVjM2ZiMDVlOTI1MTQxNTZlNWFmNjljMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pJVEZTlniSFkGwEo3KR2bkbmUtUKTAmpBouflB9_Bz0",
         "content-type: application/json;charset=utf-8"
@@ -24,24 +23,24 @@ curl_close($curl);
 
 $result = json_decode($response, true);
 
+$ip = $_SERVER["REMOTE_ADDR"];
 //print_r($result);
-
+echo $ip;
 foreach ($result as $key => $value) {
     if ($key == "results") {
         foreach ($value as $arrayKey => $content) {
-            $movie_id = $content["id"];
+//            for ($i = 0; $i < 2; $i++) {
+                $movie_id = $content["id"];
+                $movie_title = $content["original_title"];
 
-            $ip_nietvergeten = "83.83.238.191";
+                $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
 
-            $ip = $_SERVER["REMOTE_ADDR"];
 
-            $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
+//                echo "<iframe src='$videospider_url' width='600' height='400' allowfullscreen='true'></iframe>";
 
-            echo $ip . "<br><br>";
-
-            echo "<iframe src= $videospider_url  width='600' height='400' allowfullscreen='true' scrolling='no'></iframe>";
-
+                echo "<a href='watch.php?link=$videospider_url'>$movie_title</a>$ip; ";
+            }
         }
-    }
+//    }
 }
 
