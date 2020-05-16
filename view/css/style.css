@@ -69,4 +69,30 @@ body {
   padding: 20px 0;
 }
 
+#genres-list-container {
+  min-height: 80vh;
+}
+#genres-list-container .genre-title {
+  padding-top: 20px;
+}
+#genres-list-container .genre-link {
+  color: #343a40;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: list-item;
+  list-style-position: inside;
+  list-style-type: bullet;
+}
+#genres-list-container .genre-link:hover {
+  color: #1b2021;
+  font-weight: bold;
+}
+
+footer {
+  color: white;
+}
+footer a {
+  color: white;
+}
+
 /*# sourceMappingURL=style.css.map */

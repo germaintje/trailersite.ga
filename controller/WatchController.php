@@ -14,7 +14,7 @@ class WatchController
     }
 
     public function collectWatch(){
-        $movieInfo = $this->MovieApiLogic->getMovieInfo();
+        $movieInfo = $this->MovieApiLogic->singleMovieApiCall($_GET['mov_id']);
         $videospider_url = $_GET['link'];
         include 'view/watch.php';
     }

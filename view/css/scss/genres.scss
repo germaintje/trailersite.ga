@@ -1,0 +1,21 @@
+#genres-list-container {
+  min-height: 80vh;
+
+  .genre-title {
+    padding-top: 20px;
+  }
+
+  .genre-link {
+    color: #343a40;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: list-item;
+    list-style-position: inside;
+    list-style-type: bullet;
+
+    &:hover {
+      color: #1b2021;
+      font-weight: bold;
+    }
+  }
+}

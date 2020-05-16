@@ -4,13 +4,20 @@
 class MovieApiLogic
 {
 
+    protected $ApiKey;
+
+    public function __construct()
+    {
+        $this->ApiKey = '75e296279a5da656dbc38ffba223a8cd';
+    }
+
     public function moviesApiCall()
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://api.themoviedb.org/3/movie/popular?api_key=75e296279a5da656dbc38ffba223a8cd&page=1",
+            CURLOPT_URL => "https://api.themoviedb.org/3/movie/popular?api_key=$this->ApiKey&page=1",
             CURLOPT_ENCODING => "",
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_TCP_FASTOPEN => 1
@@ -30,8 +37,7 @@ class MovieApiLogic
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-//    CURLOPT_URL => "https://api.themoviedb.org/4/list/1?api_key=75e296279a5da656dbc38ffba223a8cd&page=1",
-            CURLOPT_URL => "https://api.themoviedb.org/3/movie/$movieID?api_key=75e296279a5da656dbc38ffba223a8cd",
+            CURLOPT_URL => "https://api.themoviedb.org/3/movie/$movieID?api_key=$this->ApiKey",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -53,38 +59,31 @@ class MovieApiLogic
 
     }
 
-    public function constructHome()
-    {
-        $result = $this->moviesApiCall();
-
-        $html = "";
-        $ip = $_SERVER["REMOTE_ADDR"];
-        foreach ($result as $key => $value) {
-            if ($key == "results") {
-                foreach ($value as $arrayKey => $content) {
-                    $movie_id = $content["id"];
-                    $movie_title = $content["original_title"];
-                    $imageurl = $content["poster_path"];
-                    $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
-
-                    $html .= "<div class='movie-poster-box col-12 col-sm-6 col-md-4 col-lg-3'>";
-                    $html .= "<a href='?request=watch&link=$videospider_url&mov_id=$movie_id' title='$movie_title' class='home-movie-link'>";
-                    $html .= "<img src='http://image.tmdb.org/t/p/w185$imageurl' alt=''><br>";
-                    $html .= "$movie_title</a>";
-                    $html .= "</div>";
-                }
-            }
-        }
-        return $html;
-    }
-
     public function search($search)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?api_key=75e296279a5da656dbc38ffba223a8cd&query=$search",
+            CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?api_key=$this->ApiKey&query=$search",
+            CURLOPT_ENCODING => "",
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_TCP_FASTOPEN => 1
+        ]);
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        return $result = json_decode($response, true);
+    }
+
+    public function getGenres(){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => "https://api.themoviedb.org/3/genre/movie/list?api_key=$this->ApiKey",
             CURLOPT_ENCODING => "",
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_TCP_FASTOPEN => 1
@@ -102,13 +101,6 @@ class MovieApiLogic
         $result = $this->search($_POST['']);
         $searchInfo = $result;
         return $searchInfo;
-    }
-
-    public function getMovieInfo()
-    {
-        $result = $this->singleMovieApiCall($_GET['mov_id']);
-        $movie_info = $result;
-        return $movie_info;
     }
 
 }
