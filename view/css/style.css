@@ -2,23 +2,24 @@ body {
   background-color: #E5E5E5;
 }
 
-#home-movie-list {
-  padding-top: 30px;
-}
-#home-movie-list .row .movie-poster-box {
+.movie-poster-box {
   margin: 15px 0;
-  padding: 0;
+  padding: 5px 0;
   text-align: center;
+  box-sizing: border-box;
   border: 1px solid transparent;
 }
-#home-movie-list .row .movie-poster-box:hover {
+.movie-poster-box:hover {
   border: 1px solid rgba(169, 169, 169, 0.73);
   font-weight: bold;
 }
-#home-movie-list .row .movie-poster-box .home-movie-link {
+.movie-poster-box .home-movie-link {
   color: #343a40;
 }
 
+#home-movie-list {
+  padding-top: 30px;
+}
 #videoField {
   width: 100%;
   height: 500px;
@@ -37,36 +38,48 @@ body {
 }
 
 #watch-movie-info {
-  padding: 50px 0;
+  padding: 50px 10px;
 }
-#watch-movie-info .watch-movie-detail-section {
+#watch-movie-info .row .watch-movie-detail-section {
   display: flex;
   align-items: center;
 }
-#watch-movie-info .watch-movie-detail-section .watch-movie-detail-info {
-  padding-left: 10px;
+#watch-movie-info .row .watch-movie-detail-section .watch-movie-overview {
+  padding: 20px 0;
 }
-#watch-movie-info .watch-movie-detail-section .watch-movie-detail-info .watch-movie-title {
-  display: flex;
-  align-items: center;
-}
-#watch-movie-info .watch-movie-detail-section .watch-movie-detail-info .watch-movie-title h2 {
-  margin: 0 10px;
-}
-#watch-movie-info .watch-movie-detail-section .watch-movie-details {
+
+.watch-movie-details {
   display: flex;
   align-items: center;
   padding: 10px 0;
 }
-#watch-movie-info .watch-movie-detail-section .watch-movie-details table .fa-star {
+.watch-movie-details table .fa-star {
   color: yellow;
   font-size: 1.2em;
 }
-#watch-movie-info .watch-movie-detail-section .watch-movie-details table span {
+.watch-movie-details table span {
   color: rgba(0, 0, 0, 0.5);
 }
-#watch-movie-info .watch-movie-overview {
-  padding: 20px 0;
+
+.watch-movie-detail-info {
+  padding-left: 25px;
+}
+.watch-movie-detail-info .watch-movie-title {
+  display: flex;
+  align-items: center;
+}
+.watch-movie-detail-info .watch-movie-title h2 {
+  margin: 0 10px;
+}
+
+.watch-similar-movies .row {
+  display: flex;
+  justify-content: center;
+}
+
+.watch-movie-image {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #genres-list-container {

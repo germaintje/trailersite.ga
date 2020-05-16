@@ -96,6 +96,25 @@ class MovieApiLogic
         return $result = json_decode($response, true);
     }
 
+    public function getSimilarMovies($movieID){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => "https://api.themoviedb.org/3/movie/$movieID/similar?api_key=$this->ApiKey&page=1",
+            CURLOPT_ENCODING => "",
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_TCP_FASTOPEN => 1
+        ]);
+
+        $response = curl_exec($curl);
+//        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        return $result = json_decode($response, true);
+    }
+
     public function searchMovie()
     {
         $result = $this->search($_POST['']);

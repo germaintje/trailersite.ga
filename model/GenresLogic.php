@@ -32,4 +32,5 @@ class GenresLogic
         return $html;
     }
 
+
 }

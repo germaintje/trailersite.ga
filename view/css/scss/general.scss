@@ -1,3 +1,19 @@
 body {
   background-color: #E5E5E5;
 }
+
+.movie-poster-box{
+  margin: 15px 0;
+  padding: 5px 0;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  &:hover{
+    border: 1px solid rgba(169, 169, 169, 0.73);
+    font-weight: bold;
+  }
+
+  .home-movie-link {
+    color: #343a40;
+  }
+}
