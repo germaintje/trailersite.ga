@@ -16,7 +16,12 @@ class GenresController
     
     public function collectGenresList(){
         $result = $this->GenresLogic->collectGenresList();
-        include 'view/genres.php';
+        include 'view/genresList.php';
+    }
+
+    public function collectGenreMoviesList(){
+        $result = $this->GenresLogic->collectGenreMoviesList($_GET['genre']);
+        include 'view/genreMoviesList.php';
     }
 
 }

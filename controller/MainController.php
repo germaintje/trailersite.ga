@@ -43,6 +43,10 @@ class MainController
                     $this->GenresController->collectGenresList();
                     break;
 
+                case 'searchGenre':
+                    $this->GenresController->collectGenreMoviesList();
+                    break;
+
                 default:
                     $this->HomeController->collectHome();
                     break;

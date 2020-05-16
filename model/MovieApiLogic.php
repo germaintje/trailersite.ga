@@ -115,6 +115,26 @@ class MovieApiLogic
         return $result = json_decode($response, true);
     }
 
+    public function getGenreMovies($genre){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => "https://api.themoviedb.org/3/discover/movie?api_key=$this->ApiKey&sort_by=popularity.desc&include_video=false&page=1&with_genres=$genre",
+            CURLOPT_ENCODING => "",
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_TCP_FASTOPEN => 1
+        ]);
+
+        $response = curl_exec($curl);
+//        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        return $result = json_decode($response, true);
+    }
+
     public function searchMovie()
     {
         $result = $this->search($_POST['']);

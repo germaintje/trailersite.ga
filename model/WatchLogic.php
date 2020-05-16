@@ -28,8 +28,8 @@ class WatchLogic
 
         foreach ($res as $key => $value) {
             if ($key == "results") {
-                $valueLimit4 = array_splice($value, 0, 4);
-                foreach ($valueLimit4 as $arrayKey => $content) {
+                $valueLimited = array_splice($value, 0, 8);
+                foreach ($valueLimited as $arrayKey => $content) {
                     $movie_id = $content["id"];
                     $movie_title = $content["original_title"];
                     $imageurl = $content["poster_path"];
