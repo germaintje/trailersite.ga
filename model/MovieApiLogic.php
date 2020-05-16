@@ -78,13 +78,13 @@ class MovieApiLogic
         return $html;
     }
 
-    public function search()
+    public function search($search)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher",
+            CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?api_key=75e296279a5da656dbc38ffba223a8cd&query=$search",
             CURLOPT_ENCODING => "",
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_TCP_FASTOPEN => 1
@@ -99,8 +99,8 @@ class MovieApiLogic
 
     public function searchMovie()
     {
-        $result = $this->search($_GET['mov_id']);
-        $movie_info = $result;
+        $result = $this->search($_POST['']);
+        $searchInfo = $result;
         return $searchInfo;
     }
 
