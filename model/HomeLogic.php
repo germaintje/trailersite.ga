@@ -19,7 +19,7 @@ class HomeLogic
                     $html .= "<div class='movie-poster-box col-12 col-sm-6 col-md-4 col-lg-3'>";
                     $html .= "<a href='?request=watch&link=$videospider_url&mov_id=$movie_id' title='$movie_title' class='home-movie-link'>";
                     $html .= "<img src='http://image.tmdb.org/t/p/w185$imageurl' alt=''><br>";
-                    $html .= "$movie_title</a>";
+                    $html .= mb_strimwidth($movie_title, 0, 25, '...') . "</a>";
                     $html .= "</div>";
                 }
             }
