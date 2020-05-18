@@ -11,6 +11,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="view/css/style.css" type="text/css">
     <noscript>Please turn on javascript in your browser settings</noscript>
+    <script data-ad-client="ca-pub-9763921792532180" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
