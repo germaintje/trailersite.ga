@@ -135,11 +135,4 @@ class MovieApiLogic
         return $result = json_decode($response, true);
     }
 
-    public function searchMovie()
-    {
-        $result = $this->search($_POST['']);
-        $searchInfo = $result;
-        return $searchInfo;
-    }
-
 }

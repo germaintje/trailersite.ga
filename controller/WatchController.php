@@ -27,7 +27,7 @@ class WatchController
     }
 
     public function collectSearch(){
-        $searchInfo = $this->MovieApiLogic->searchMovie();
+        $searchInfo = $this->MovieApiLogic->search($_GET['mov_id']);
 
         include 'view/search.php';
     }

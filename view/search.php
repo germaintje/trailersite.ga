@@ -1,4 +1,13 @@
-<?php
-$poster = $searchInfo['poster_path'];
+<?php include 'view/inc/header.php'; ?>
 
-echo "<img src='http://image.tmdb.org/t/p/w185$poster' alt=''/>";
+    <div id="genres-list-container" class="container">
+        <div class="row">
+            <div class="genre-title col-12">
+                <h1 class="">seacrh</h1>
+            </div>
+            <br>
+            <?= $searchInfo; ?>
+        </div>
+    </div>
+
+<?php include 'view/inc/footer.php'; ?>
