@@ -29,7 +29,8 @@
             <li class="nav-item"><a class="nav-link" href="#" data-abc="true">Social</a></li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0" action="?request=search" method="GET">
+        <form class="form-inline my-2 my-lg-0" action="index.php" method="GET">
+            <input class="form-control mr-sm-2" type="hidden" name="request" value="search">
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search">Search</button>
         </form>
