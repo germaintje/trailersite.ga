@@ -12,8 +12,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="view/css/style.css" type="text/css">
     <noscript>Please turn on javascript in your browser settings</noscript>
-    <script data-ad-client="ca-pub-9763921792532180" async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 </head>
 <body>
 
@@ -23,7 +22,7 @@
                 class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="?request=home" data-abc="true">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="?request=home&page=1" data-abc="true">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="?request=genres" data-abc="true">Genres</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-abc="true">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="#" data-abc="true">Social</a></li>
