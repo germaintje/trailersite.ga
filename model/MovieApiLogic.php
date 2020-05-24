@@ -11,13 +11,14 @@ class MovieApiLogic
         $this->ApiKey = '75e296279a5da656dbc38ffba223a8cd';
     }
 
-    public function moviesApiCall()
+    public function moviesApiCall($page)
     {
+//        $page = 1;
         $curl = curl_init();
 
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://api.themoviedb.org/3/movie/popular?api_key=$this->ApiKey&page=1",
+            CURLOPT_URL => "https://api.themoviedb.org/3/movie/popular?api_key=$this->ApiKey&page=$page",
             CURLOPT_ENCODING => "",
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_TCP_FASTOPEN => 1

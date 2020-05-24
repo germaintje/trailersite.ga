@@ -27,5 +27,22 @@ class HomeLogic
         return $html;
     }
 
+    public function HomePagination($apiData)
+    {
+        $html = "";
+
+        foreach ($apiData as $key => $value) {
+
+            $maxpage = $value['page'];
+            var_dump($maxpage);
+
+
+
+
+            $html .= "";
+        }
+        return $html;
+    }
+
 
 }

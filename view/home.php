@@ -6,6 +6,9 @@
                 <h1>Popular</h1>
             </div>
             <?= $result; ?>
+
+            <?= $pagination; ?>
+
         </div>
     </div>
 <?php include 'view/inc/footer.php'; ?>

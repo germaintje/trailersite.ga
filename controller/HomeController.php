@@ -21,8 +21,10 @@ class HomeController
     }
 
     public function collectHome(){
-        $res = $this->MovieApiLogic->moviesApiCall();
+        $res = $this->MovieApiLogic->moviesApiCall($_GET['page']);
         $result = $this->HomeLogic->constructHome($res);
+
+        $pagination = $this->HomeLogic->HomePagination($res);
         include 'view/home.php';
     }
 
