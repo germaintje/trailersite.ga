@@ -43,38 +43,48 @@ class HomeLogic
 //            $maxpage = $value['total_pages'];
 //    }
 
-        $total_pages = 501;
-        $limit = 5;
+        $first_page = 1;
+
+        //TODO: krijg via api call laatste page
+        $total_pages = 500;
         $pageURL = $_GET['page'];
 
         $html = "";
-        $html .= "<ul class='pagination justify-content-center'>";
+        $html .= "<ul class='pagination pagination-center'>";
         if ($total_pages >= 1 && $pageURL <= $total_pages) {
-            $previous = 1;
-            if ($pageURL == 1) {
-                $previous = $pageURL;
-                $html .= "<li class='page-item disabled'><a class='page-link' href='?request=home&page=$previous'>$previous</a></li>";
-            }elseif($pageURL < 6){
-                $previous = $pageURL -6;
-                $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$previous'>$previous</a></li>";
-            }else {
-                $previous = $pageURL -6;
-                $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$previous'>$previous</a></li>";
+
+            //check if page url is the same as firstpage. yes -> disable button
+            if($pageURL == $first_page) {
+                $html .= "<li class='page-item disabled'><a class='page-link' href='?request=home&page=$first_page'>First</a></li>";
+                $html .= "<li class='page-item disabled'><a class='page-link' href='?request=home&page=$first_page'>&laquo;</a></li>";
+            }else{
+                $previous = $pageURL -1;
+
+                $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$first_page'>first</a></li>";
+                $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$previous'>&laquo;</a></li>";
             }
 
-            $i = max(2, $pageURL - 5);
-//            if ($i > 2)
-//                $html .= "...";
-            for (; $i < min($pageURL + 6, $total_pages); $i++) {
+
+            $i = max(1, $pageURL - 4);
+            for (; $i < min($pageURL + 4, $total_pages +1); $i++) {
                 if ($i == $pageURL) {
                     $html .= "<li class='page-item active'><a class='page-link' href='?request=home&page=$i'>$i</a></li>";
-                } else {
+                }else {
                     $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$i'>$i</a></li>";
                 }
             }
-//            if ($i != $total_pages)
-//                $html .= "...";
-            $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$total_pages'>$total_pages</a></li>";
+
+            //check if page url is the same as total_pages yes -> disable button
+            if($pageURL == $total_pages) {
+                $html .= "<li class='page-item disabled'><a class='page-link' href='?request=home&page=1'>&raquo;</a></li>";
+                $html .= "<li class='page-item disabled'><a class='page-link' href='?request=home&page=$total_pages'>last</a></li>";
+            }else{
+                $next = $pageURL +1;
+
+                $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$next'>&raquo;</a></li>";
+                $html .= "<li class='page-item'><a class='page-link' href='?request=home&page=$total_pages'>last</a></li>";
+            }
+
 
             $html .= "</ul>";
             return $html;
