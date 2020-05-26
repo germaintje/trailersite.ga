@@ -64,8 +64,6 @@ class MovieApiLogic
 
     public function search($search)
     {
-        var_dump($search);
-
         $curl = curl_init();
 
         curl_setopt_array($curl, [
