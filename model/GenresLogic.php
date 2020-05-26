@@ -48,7 +48,10 @@ class GenresLogic
                     $movie_id = $content["id"];
                     $movie_title = $content["original_title"];
                     $imageurl = $content["poster_path"];
-                    $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
+
+                    $context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
+                    $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip",false,$context);
+//                    $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
 
                     $html .= "<div class='movie-poster-box col-11 col-sm-6 col-md-4 col-lg-3'>";
                     $html .= "<a href='?request=watch&link=$videospider_url&mov_id=$movie_id' title='$movie_title' class='home-movie-link'>";
