@@ -1,5 +1,5 @@
 <?php
-require_once 'controller/HomeController.php';
+require_once 'controller/MoviesController.php';
 require_once 'controller/WatchController.php';
 require_once 'controller/GenresController.php';
 
@@ -7,9 +7,9 @@ class MainController
 {
 
     /**
-     * @var HomeController
+     * @var MoviesController
      */
-    private $HomeController;
+    private $MoviesController;
     /**
      * @var WatchController
      */
@@ -21,7 +21,7 @@ class MainController
 
     public function __construct()
     {
-        $this->HomeController = new HomeController();
+        $this->MoviesController = new MoviesController();
         $this->WatchController = new WatchController();
         $this->GenresController = new GenresController();
     }
@@ -47,8 +47,16 @@ class MainController
                     $this->GenresController->collectGenreMoviesList();
                     break;
 
+                case 'popularMovies':
+                    $this->MoviesController->collectPopularMovies();
+                    break;
+
+                case 'movieDetail':
+                    $this->WatchController->collectMovieDetailMovie();
+                    break;
+
                 default:
-                    $this->HomeController->collectHome();
+                    $this->MoviesController->collectPopularMovies();
                     break;
             }
         } catch (ValidationException $e) {

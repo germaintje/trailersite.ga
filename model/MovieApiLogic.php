@@ -6,9 +6,11 @@ class MovieApiLogic
 
     protected $ApiKey;
 
+
     public function __construct()
     {
         $this->ApiKey = '75e296279a5da656dbc38ffba223a8cd';
+
     }
 
     public function moviesApiCall($page)

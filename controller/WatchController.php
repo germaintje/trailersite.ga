@@ -27,10 +27,21 @@ class WatchController
     }
 
     public function collectSearch(){
-        $res = $this->WatchLogic->collectSearchDetails($_GET['search']);
+        $res = $this->WatchLogic->collectSearchDetails(htmlspecialchars($_GET['search']));
         $result = $this->WatchLogic->constructSearch($res);
 
         include 'view/search.php';
+    }
+
+
+    public function collectMovieDetailMovie()
+    {
+        $movieInfo = $this->WatchLogic->collectMovieDetails($_GET['mov_id']);
+        $similarMovies = $this->WatchLogic->collectSimilarMovies($_GET['mov_id']);
+
+        $videospider_url = $this->WatchLogic->collectVideospiderUrl($movieInfo);
+
+        include 'view/watch.php';
     }
 
 }
