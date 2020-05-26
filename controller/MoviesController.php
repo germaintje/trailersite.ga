@@ -37,7 +37,7 @@ class MoviesController
     public function collectPopularMovies()
     {
         $res = $this->MovieApiLogic->moviesApiCall($_GET['page']);
-        $result = $this->MoviesLogic->popularMovies($res);
+        $result = $this->MoviesLogic->MoviesOverview($res);
 
         $pagination = $this->Pagination->Pagination_Overview($res);
         include 'view/home.php';

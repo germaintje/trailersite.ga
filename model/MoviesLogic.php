@@ -4,7 +4,7 @@
 class MoviesLogic
 {
 
-    public function popularMovies($apiData)
+    public function MoviesOverview($apiData)
     {
         $html = "";
         foreach ($apiData as $key => $value) {
