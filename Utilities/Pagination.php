@@ -1,7 +1,7 @@
 <?php
 class Pagination{
 
-    public function Pagination_Overview($apiData)
+    public function Pagination_Overview($apiData, $page)
     {
         /*
          * ik heb voor nu een $_GET gebruikt om de pagenumber te krijgen
@@ -18,12 +18,16 @@ class Pagination{
 //    }
 
         $first_page = 1;
-        $request = $_GET['request'];
+        if(!isset($_GET['request'])){
+            $request = "popularMovies";
+        }else {
+            $request = $_GET['request'];
+        }
 
         //TODO: krijg via api call laatste page
-        $total_pages = 500;
-        if (isset($_GET['page'])) {
-            $pageURL = $_GET['page'];
+        $total_pages = $apiData['total_pages'];;
+        if ($page) {
+            $pageURL = $page;
         } else {
             $pageURL = 1;
         }
@@ -64,8 +68,9 @@ class Pagination{
             }
 
             $html .= "</ul>";
-            return $html;
+
         }
+        return $html;
     }
 
 }

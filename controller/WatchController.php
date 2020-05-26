@@ -28,6 +28,7 @@ class WatchController
 
     public function collectSearch(){
         $res = $this->WatchLogic->collectSearchDetails(htmlspecialchars($_GET['search']));
+        var_dump($_GET['search']);
         $result = $this->WatchLogic->constructSearch($res);
 
         include 'view/search.php';

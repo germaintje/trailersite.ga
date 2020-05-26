@@ -36,10 +36,16 @@ class MoviesController
 
     public function collectPopularMovies()
     {
-        $res = $this->MovieApiLogic->moviesApiCall($_GET['page']);
+        if(!isset($_GET['page']) && empty($_GET['page'])){
+            $page = "1";
+        }else{
+            $page = $_GET['page'];
+        }
+
+        $res = $this->MovieApiLogic->moviesApiCall($page);
         $result = $this->MoviesLogic->MoviesOverview($res);
 
-        $pagination = $this->Pagination->Pagination_Overview($res);
+        $pagination = $this->Pagination->Pagination_Overview($res, $page);
         include 'view/home.php';
     }
 

@@ -64,11 +64,13 @@ class MovieApiLogic
 
     public function search($search)
     {
+        var_dump($search);
+
         $curl = curl_init();
 
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?api_key=$this->ApiKey&query=$search",
+            CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?api_key=$this->ApiKey&query=" .str_replace(" ", "%20", $search). ";",
             CURLOPT_ENCODING => "",
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_TCP_FASTOPEN => 1
