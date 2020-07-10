@@ -1,29 +1,17 @@
 <?php
-require_once 'controller/MoviesController.php';
-require_once 'controller/WatchController.php';
-require_once 'controller/GenresController.php';
+require_once 'controller/OverviewController.php';
+require_once 'controller/MoviesDetailsController.php';
 
 class MainController
 {
+    private $OverviewController;
 
-    /**
-     * @var MoviesController
-     */
-    private $MoviesController;
-    /**
-     * @var WatchController
-     */
-    private $WatchController;
-    /**
-     * @var GenresController
-     */
-    private $GenresController;
+    private $MoviesDetailsController;
 
     public function __construct()
     {
-        $this->MoviesController = new MoviesController();
-        $this->WatchController = new WatchController();
-        $this->GenresController = new GenresController();
+        $this->OverviewController = new OverviewController();
+        $this->MoviesDetailsController = new MoviesDetailsController();
     }
 
     function handleRequest()
@@ -31,32 +19,35 @@ class MainController
         try {
             $request = isset($_REQUEST['request']) ? $_REQUEST['request'] : null;
             switch ($request) {
-                case 'watch':
-                    $this->WatchController->collectWatch();
+                /**
+                 * Overview Controller cases
+                 */
+                case 'Search':
+                    $this->OverviewController->collectSearch($_GET['request'], $_GET['request']);
                     break;
 
-                case 'search':
-                    $this->WatchController->collectSearch();
+                case 'UpcomingMovies':
+                case 'PopularMovies':
+                    $this->OverviewController->collectMoviesOverview($_GET['request'], $_GET['request']);
                     break;
 
-                case 'genres':
-                    $this->GenresController->collectGenresList();
+                case 'Genres':
+                    $this->OverviewController->collectGenresList($_GET['request']);
                     break;
 
-                case 'searchGenre':
-                    $this->GenresController->collectGenreMoviesList();
+                case 'GenreMovies':
+                    $this->OverviewController->collectGenreMoviesList($_GET['genreName']);
                     break;
 
-                case 'popularMovies':
-                    $this->MoviesController->collectPopularMovies();
-                    break;
-
+                /**
+                 * Detail page for one Movie
+                 */
                 case 'movieDetail':
-                    $this->WatchController->collectMovieDetailMovie();
+                    $this->MoviesDetailsController->collectMovieDetails();
                     break;
 
                 default:
-                    $this->MoviesController->collectPopularMovies();
+                    $this->OverviewController->collectMoviesOverview();
                     break;
             }
         } catch (ValidationException $e) {
