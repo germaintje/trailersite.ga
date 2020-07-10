@@ -25,7 +25,7 @@ class MoviesDetailsController
         $movieInfo = $this->MoviesDetailLogic->collectMovieDetails($_GET['mov_id']);
         $similarMovies = $this->OverviewLogic->MoviesOverview($id=5, $movieID=$_GET['mov_id'], $search=null, $genre=null);
 
-        $videospider_url = $this->MoviesDetailLogic->collectVideospiderUrl();
+        $videospider_url = $this->MoviesDetailLogic->collectVideospiderUrl($_GET['mov_id']);
 
         include 'view/watch.php';
     }

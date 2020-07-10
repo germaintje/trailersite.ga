@@ -4,7 +4,6 @@ class DataHandler
 
     protected $ApiKey;
 
-
     public function __construct()
     {
         $this->ApiKey = '75e296279a5da656dbc38ffba223a8cd';
@@ -27,7 +26,9 @@ class DataHandler
             $curlopt_url = "https://api.themoviedb.org/3/movie/$movieID/similar?api_key=$this->ApiKey&page=$page";
         } elseif ($id == 6) {
             $curlopt_url = "https://api.themoviedb.org/3/discover/movie?api_key=$this->ApiKey&sort_by=popularity.desc&include_video=false&page=1&with_genres=$genre&page=$page";
-        }elseif ($id == "UpcomingMovies"){
+        } elseif($id == 7) {
+            $curlopt_url = "https://api.themoviedb.org/3/movie/$movieID/videos?api_key=$this->ApiKey";
+        } elseif($id == "UpcomingMovies"){
             $curlopt_url = "https://api.themoviedb.org/3/movie/upcoming?api_key=$this->ApiKey&page=$page";
         }else {
             $curlopt_url = "";

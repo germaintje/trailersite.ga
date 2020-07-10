@@ -16,41 +16,31 @@ class MoviesDetailLogic
         return $result = $this->DataHandler->apiCall($page=null, $id=2, $movie_id, $search=null, $genre=null);
     }
 
-//    public function collectSimilarMovies($movie_id)
-//    {
-//        $res = $this->DataHandler->apiCall($page=null, $id=5, $movie_id, $search=null, $genre=null);
-//
-//        $html = "";
-//        foreach ($res as $key => $value) {
-//            if ($key == "results") {
-//                $valueLimited = array_splice($value, 0, 8);
-//                foreach ($valueLimited as $arrayKey => $content) {
-//                    $movie_id = $content["id"];
-//                    $movie_title = $content["original_title"];
-//                    $imageurl = $content["poster_path"];
-//
-//                    $html .= "<div class='movie-poster-box col-11 col-sm-6 col-md-4 col-lg-3'>";
-//                    $html .= "<a href='?request=movieDetail&mov_id=$movie_id' title='$movie_title' class='home-movie-link'>";
-//                    $html .= "<img src='http://image.tmdb.org/t/p/w185$imageurl' alt=''><br>";
-//                    $html .= mb_strimwidth($movie_title, 0, 25, '...') . "</a>";
-//                    $html .= "</div>";
-//                }
-//            }
-//        }
-//
-//        return $html;
-//    }
-
-    public function collectVideospiderUrl()
+    public function collectVideospiderUrl($movie_id)
     {
-        $ip = $_SERVER["REMOTE_ADDR"];
-        $movie_id = $_GET['mov_id'];
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
-//       $videospider_url = $this->DataHandler->apiCall($page, $id, $movie_id, $search, $genre);
+            $res = $this->DataHandler->apiCall($page=null, $id=7, $movie_id, $search=null, $genre=null);
 
-        $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
+            foreach ($res as $key => $value) {
+                if ($key == "results") {
+                    foreach ($value as $arrayKey => $content) {
+                        $yt_key = $content["key"];
 
-        return $videospider_url;
+                        $videospider_url = "https://www.youtube.com/embed/$yt_key";
+                    }
+                }
+            }
+
+            return $videospider_url;
+        }else {
+            $ip = $_SERVER["REMOTE_ADDR"];
+            $movie_id = $_GET['mov_id'];
+
+            $videospider_url = file_get_contents("https://vsrequest.video/request.php?key=DBUBFDLOJCRjoGBA&secret_key=nzgbf338ysoh17zbrida1f4xrvt74d&video_id=$movie_id&tmdb=1&ip=$ip");
+
+            return $videospider_url;
+        }
     }
 
 

@@ -47,7 +47,7 @@ class MainController
                     break;
 
                 default:
-                    $this->OverviewController->collectMoviesOverview();
+                    $this->OverviewController->collectMoviesOverview($title="PopularMovies", $id="PopularMovies");
                     break;
             }
         } catch (ValidationException $e) {

@@ -10,9 +10,21 @@ foreach ($movieInfo['genres'] as $genreArray) {
     }
 }
 
-?>
-<div id="videoField">
-    <?= "<iframe src='$videospider_url' width='800' height='500' allowfullscreen='true'></iframe>"; ?>
+//$source = "";
+//        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//            $source .= "<div id='videoField'>";
+//            $source .= "<iframe src='$videospider_url' width='800' height='500' allowfullscreen='true'></iframe>";
+//            $source .= "</div>";
+//        }else {
+//            $source .= "<div id='videoField'>";
+//            $source .= "<iframe src='$videospider_url' width='800' height='500' allowfullscreen='true'></iframe>";
+//            $source .= "</div>";
+//       }
+//        echo $source;
+//?>
+
+<div id='videoField'>
+    <iframe src='<?php echo $videospider_url ?>' width='800' height='500' allowfullscreen='true'></iframe>
 </div>
 
 <div id="watch-movie-info" class="container">
