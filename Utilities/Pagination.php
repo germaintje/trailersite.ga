@@ -81,11 +81,11 @@
 $first_page = 1;
 if(!isset($_GET['request'])){
     $request = "popularMovies";
-}elseif ($id == 3){
+}elseif ($id == "Search"){
     $request = $_GET['request'] . "&search=" . $_GET['search'];
-}elseif($id == 5){
+}elseif($id == "Similar"){
     $request = $_GET['request'] . "&mov_id=" . $_GET['mov_id'];
-}elseif ($id == 6){
+}elseif ($id == "Overview_genre"){
     $request = $_GET['request'] . "&genre=" . $_GET['genre'] . "&genreName=" . $_GET['genreName'];
 }else {
     $request = $_GET['request'];

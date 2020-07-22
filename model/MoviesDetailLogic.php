@@ -11,16 +11,16 @@ class MoviesDetailLogic
         $this->DataHandler = new DataHandler();
     }
 
-    public function collectMovieDetails($movie_id)
+    public function collectMovieDetails($id, $movie_id, $mov_or_tv)
     {
-        return $result = $this->DataHandler->apiCall($page=null, $id=2, $movie_id, $search=null, $genre=null);
+        return $result = $this->DataHandler->apiCall($page=null, $id, $movie_id, $search=null, $genre=null, $mov_or_tv, $api_type=null);
     }
 
-    public function collectVideospiderUrl($movie_id)
+    public function collectVideospiderUrl($movie_id, $mov_or_tv, $api_type)
     {
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
-            $res = $this->DataHandler->apiCall($page=null, $id=7, $movie_id, $search=null, $genre=null);
+            $res = $this->DataHandler->apiCall($page=null, $id="video", $movie_id, $search=null, $genre=null, $mov_or_tv, $api_type);
 
             foreach ($res as $key => $value) {
                 if ($key == "results") {
@@ -29,6 +29,8 @@ class MoviesDetailLogic
 
                         $videospider_url = "https://www.youtube.com/embed/$yt_key";
                     }
+                }else{
+                    $videospider_url = null;
                 }
             }
 

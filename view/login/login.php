@@ -1,12 +1,4 @@
 <?php
-// Initialize the session
-
-
-//// Check if the user is already logged in, if yes then redirect him to welcome page
-//if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//header("location: index.php");
-//exit;
-//}
 
 // Include config file
 require_once "model/config.php";
@@ -88,21 +80,23 @@ mysqli_close($link);
 }
 ?>
 
-    <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-            <span class="help-block"><?php echo $username_err; ?></span>
-        </div>
-        <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control">
-            <span class="help-block"><?php echo $password_err; ?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Login">
-        </div>
-        <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-    </form>
-
+<form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+        <label>Username</label>
+        <input placeholder="Username" name="username" class="form-control form-control-sm" type="text" required="" value="<?php echo $username; ?>">
+        <span class="help-block"><?php echo $username_err; ?></span>
+    </div>
+    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+        <label>Password</label>
+        <input placeholder="Password" name="password" class="form-control form-control-sm" type="password" required="">
+        <span class="help-block"><?php echo $password_err; ?></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Login">
+    </div>
+    <div class="form-group text-center">
+        <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot password?</a></small>
+        <small><a href="register.php">Sign up now</a></small>
+    </div>
+</form>
 

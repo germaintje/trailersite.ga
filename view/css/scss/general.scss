@@ -1,5 +1,10 @@
 body {
-  background-color: #E5E5E5;
+  //background-color: #E5E5E5;
+  background-color: #f4f3f3;
+}
+
+.main_body{
+  margin-top: 5pc;
 }
 
 .movie-poster-box{
@@ -7,14 +12,39 @@ body {
   padding: 5px 0;
   text-align: center;
   box-sizing: border-box;
-  border: 1px solid transparent;
-  &:hover{
-    border: 1px solid rgba(169, 169, 169, 0.73);
-    font-weight: bold;
-  }
 
   .home-movie-link {
     color: #343a40;
+
+    .span_corner{
+      position: absolute;
+      font-weight: bold;
+      padding: 5px;
+    }
+    .vote_average {
+      margin: 5px;
+      color: black;
+      font-size: 15px;
+      background: lightblue;
+      border-radius: 1pc;
+      width: 2pc;
+    }
+    .release_date{
+      margin: 5px 5px 5px 157px;
+      color: white;
+      font-size: 12px;
+    }
+
+    .new {
+      margin: 0px 5px 5px 161px;
+      background: #cf4545;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    &:hover{
+      font-weight: bold;
+    }
+
   }
 }
 
